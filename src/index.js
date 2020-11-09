@@ -1,5 +1,5 @@
 const conditions = ['terms', 'policy', 'prvacy', 'privacy'];
-const marketing = ['marketing', 'receive', 'send me', 'email', 'sms', 'news', 'updates', 'offer', 'advertising', 'analytics'];
+const marketing = ['marketing', 'receive', 'send me', 'email', 'sms', 'news', 'updates', 'offer', 'advertising', 'analytics', 'tailored'];
 const optOut = ['do not', 'don\'t'];
 
 const isTermsAndConditions = text => typeof text === 'string' && conditions.some(term => text.includes(term));
