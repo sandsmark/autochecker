@@ -44,7 +44,7 @@ const determineOperation = (text) => {
   };
 };
 
-setTimeout(() => {
+function findCheckboxes() {
   const operations = [];
   // find all inputs of type checkbox on the page
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -100,9 +100,22 @@ setTimeout(() => {
     });
   });
 
+  if (operations.length === 0) {
+      console.log("found none");
+    return false;
+  }
+
   chrome.runtime.sendMessage({
     operations,
   });
-}, 2500);
+  return true;
+}
+
+if (!findCheckboxes()) {
+  // Probably not created yet, try again later
+  setTimeout(() => {
+    findCheckboxes();
+  }, 2500);
+}
 
 //export { isTermsAndConditions, isMarketingRelated, isOptOut, determineOperation };
