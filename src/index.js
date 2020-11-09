@@ -87,4 +87,4 @@ setTimeout(() => {
   });
 }, 2500);
 
-export { isTermsAndConditions, isMarketingRelated, isOptOut, determineOperation };
+//export { isTermsAndConditions, isMarketingRelated, isOptOut, determineOperation };
