@@ -65,7 +65,7 @@ function findCheckboxes() {
       }
     }
 
-    if (labelText === '') {
+    if (labelText === '' || determineOperation(labelText).action === 'ignored') {
       let sibling = checkbox.nextElementSibling;
       while(sibling) {
         let text = sibling.innerText;
@@ -73,6 +73,7 @@ function findCheckboxes() {
           labelText = text;
           break;
         }
+        sibling = sibling.nextElementSibling;
       }
     }
 
@@ -81,7 +82,15 @@ function findCheckboxes() {
       labelText = checkbox.parentNode.innerText;
     }
 
-    const operation = determineOperation(labelText.toLowerCase());
+    let operation = determineOperation(labelText.toLowerCase());
+    console.log(checkbox.id);
+    console.log(operation);
+    if (operation.action === 'ignored') {
+      operation = determineOperation(checkbox.id.toLowerCase());
+      if (operation.action !== 'ignored') {
+        labelText = checkbox.id.toLowerCase();
+      }
+    }
 
     if (operation.action === 'checked') {
       // eslint-disable-next-line no-param-reassign
