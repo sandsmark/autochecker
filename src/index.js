@@ -1,4 +1,4 @@
-const conditions = ['terms', 'policy', 'prvacy'];
+const conditions = ['terms', 'policy', 'prvacy', 'privacy'];
 const marketing = ['marketing', 'receive', 'send me', 'email', 'sms', 'news', 'updates', 'offer'];
 const optOut = ['do not', 'don\'t'];
 
@@ -63,6 +63,22 @@ setTimeout(() => {
       if (label) {
         labelText = label.innerText;
       }
+    }
+
+    if (labelText === '') {
+      let sibling = checkbox.nextElementSibling;
+      while(sibling) {
+        let text = sibling.innerText;
+        if (determineOperation(text).action !== 'ignored') {
+          labelText = text;
+          break;
+        }
+      }
+    }
+
+    // Last shot
+    if (labelText === '') {
+      labelText = checkbox.parentNode.innerText;
     }
 
     const operation = determineOperation(labelText.toLowerCase());
