@@ -83,8 +83,6 @@ function findCheckboxes() {
     }
 
     let operation = determineOperation(labelText.toLowerCase());
-    console.log(checkbox.id);
-    console.log(operation);
     if (operation.action === 'ignored') {
       operation = determineOperation(checkbox.id.toLowerCase());
       if (operation.action !== 'ignored') {
@@ -110,7 +108,6 @@ function findCheckboxes() {
   });
 
   if (operations.length === 0) {
-      console.log("found none");
     return false;
   }
 
