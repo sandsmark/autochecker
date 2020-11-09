@@ -86,9 +86,11 @@ setTimeout(() => {
     if (operation.action === 'checked') {
       // eslint-disable-next-line no-param-reassign
       checkbox.checked = true;
+      checkbox.style.outline = "thick solid #55FF55"
     } else if (operation.action === 'unchecked') {
       // eslint-disable-next-line no-param-reassign
       checkbox.checked = false;
+      checkbox.style.outline = "thick solid #FF5555"
     }
     operations.push({
       checkboxId: checkbox.id,
