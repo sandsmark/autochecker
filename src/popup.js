@@ -16,22 +16,20 @@ const generateCheckboxInfo = (operations = []) => {
   const container = document.getElementById('autochecker-results');
   if (operations.length) {
     operations.forEach((operation) => {
-      // create title for checkbox
-      const titleElement = document.createElement('h4');
-      const titleText = document.createTextNode(`${operation.checkboxId} (${operation.action} by Autochecker)`);
-      titleElement.appendChild(titleText);
-      container.appendChild(titleElement);
-      // create info for checkbox
       const labelTextElement = document.createElement('p');
       // add an italics element for displaying the label text of the checkbox
       const italicsElement = document.createElement('i');
+      const boldElement = document.createElement('b');
+      const actionText = document.createTextNode(`${operation.action}: `);
+      boldElement.appendChild(actionText);
+      italicsElement.appendChild(boldElement);
       const labelText = document.createTextNode(`"${operation.text}"`);
       italicsElement.appendChild(labelText);
       labelTextElement.appendChild(italicsElement);
       container.appendChild(labelTextElement);
       // now add the message from auto-checker
       const infoElement = document.createElement('p');
-      const infoText = document.createTextNode(`The above text was identified as ${operation.category}. \
+      const infoText = document.createTextNode(`The above text (${operation.checkboxId}) was identified as ${operation.category}. \
 The checkbox has been ${operation.action}.`);
       infoElement.appendChild(infoText);
       container.appendChild(infoElement);
